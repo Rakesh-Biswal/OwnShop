@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendHub | Ecommerce website Design</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    
+    <!-- ------------featured    item ------------- -->
+    
+    <!-- ------------featured   proudcts------------- -->
+
+    <div class="small-container">
+        <h2 class="title">Featured Proudcts</h2><br>
+        <div class="row">
+            <div class="col-4" data-id="gf56hfrw">
+                <img src="https://i.pinimg.com/736x/50/4b/e0/504be0bdf73e177818caecd3d3bdc8c5.jpg" height="330px">
+                <h4>boys blue zeens</h4>
+                <div class="description" style="display: none;">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, fugiat?
+                </div>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>$500.00</p>
+            </div>
+            <div class="col-4" data-id="gf56hsdw">
+                <img src="https://img3.junaroad.com/uiproducts/20230198/pri_175_p-1693242070.jpg">
+                <h4>puma green Hunter shoe</h4>
+                <div class="description" style="display: none;">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, fugiat?
+                </div>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </div>
+                <p>$4000.00</p>
+            </div>
+            
+            
+
+
+
+        </div>
+
+        
+
+
+    </div>
+
+    <!-- ---------------offer---------- -->
+    
+
+
+    <!-- -----------Testimonial------- -->
+
+    <!-- ------------foter------------ -->
+
+    <!-- js for Toggle menu -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            var MenuItems = document.getElementById("MenuItems");
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px"
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px"
+                }
+            }
+
+            const point = document.querySelectorAll(".small-container .col-3")
+            point.forEach((pointer) => {
+                pointer.addEventListener('click', () => {
+                    alert("Sorry We are Just Working On It...!");
+                });
+            });
+
+            
+            document.getElementById("menu-icon-cart").addEventListener("click", () => {
+                window.location.href='Cart.html';
+            });
+
+
+            // Get all product elements
+            const products = document.querySelectorAll('.small-container .col-4');
+            
+
+            function generateUniqueId() {
+                return 'id-' + Math.random().toString(36).substr(2, 9);
+            }
+
+            // Add click event listener to each product image
+            products.forEach(product => {
+                product.querySelector('img').addEventListener('click', function (event) {
+                    const Pid=product.getAttribute('data-id');
+                    const img = event.target.src;
+                    const name = product.querySelector('h4').textContent;
+                    const description = product.querySelector('.description').innerHTML;
+                    const price = product.querySelector('p').textContent;
+
+                    // Create an object for the clicked product's details
+                    const details = {
+                        id:Pid,
+                        image: img,
+                        name: name,
+                        description: description,
+                        price: price
+                    };
+
+                    // Store the clicked product details in localStorage
+                    localStorage.setItem('selectedProduct', JSON.stringify(details));
+                    // Redirect to product-details.html
+                    window.location.href = `product_detail_1.html?productId=${Pid}`;
+                });
+            });
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
